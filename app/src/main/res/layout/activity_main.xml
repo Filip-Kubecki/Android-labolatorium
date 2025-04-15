@@ -7,62 +7,139 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#634D4D"
-        android:gravity="center"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="409dp"
+        android:layout_height="729dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/editTextText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:ems="10"
+            android:inputType="text"
+            android:text="podaj imię"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Odczytaj imię"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+
+        <EditText
+            android:id="@+id/editTextNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="Licznik wciśnięć: 0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button" />
+
+        <EditText
+            android:id="@+id/editTextNumber2"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="Pierwsza liczba"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
+
+        <EditText
+            android:id="@+id/editTextNumber3"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="Druga liczba"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
+
+        <TextView
+            android:id="@+id/editTextNumber4"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="Wynik"
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/button2"
+            app:layout_constraintTop_toBottomOf="@+id/editTextNumber3" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Mnożenie"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextNumber2" />
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_width="200dp"
-            android:layout_height="100dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:background="#FF5722"
-            android:fontFamily="monospace"
-            android:gravity="center"
-            android:text="TextView"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Jak widzę zaliczenie Androida:"
+            android:textColor="#DB0606"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextNumber4" />
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_above="@id/textView2"
-            android:layout_alignStart="@+id/textView2"
-            android:layout_marginStart="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="#FF5722"
-            android:fontFamily="monospace"
-            android:gravity="center"
-            android:text="TextView"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            tools:ignore="NotSibling" />
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2">
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_below="@id/textView2"
-            android:layout_alignEnd="@+id/textView2"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_toRightOf="@id/main"
-            android:background="#FF5722"
-            android:fontFamily="monospace"
-            android:gravity="center"
-            android:text="TextView"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            tools:ignore="NotSibling" />
-    </RelativeLayout>
+            <RadioButton
+                android:id="@+id/radioButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1 kolokwium"
+                android:textColor="#2196F3" />
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2 kolokwium"
+                android:textColor="#E91E63" />
+
+            <RadioButton
+                android:id="@+id/radioButton3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="3 kolokwium"
+                android:textColor="#FF9800" />
+        </RadioGroup>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
