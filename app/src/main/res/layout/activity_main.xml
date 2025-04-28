@@ -7,143 +7,149 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.gridlayout.widget.GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="0dp"
-        app:columnCount="3"
-        app:rowCount="5"
+    <Button
+        android:id="@+id/addButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:width="150dp"
+        android:height="60dp"
+        android:fontFamily="monospace"
+        android:onClick="addOne"
+        android:text="Dodaj 1"
+        android:textAllCaps="true"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numberTextView" />
+
+    <Button
+        android:id="@+id/subButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:width="150dp"
+        android:height="60dp"
+        android:fontFamily="monospace"
+        android:onClick="subOne"
+        android:text="Odejmij 1"
+        android:textAllCaps="true"
+        android:textColorLink="#9C2727"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/numberTextView" />
+
+    <Button
+        android:id="@+id/resetButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:width="240dp"
+        android:height="60dp"
+        android:onClick="reset"
+        android:fontFamily="monospace"
+        android:text="Reset"
+        android:textAllCaps="true"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addButton" />
+
+    <TextView
+        android:id="@+id/numberTextView"
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="100dp"
+        android:width="100dp"
+        android:fontFamily="casual"
+        android:gravity="center"
+        android:lineBreakStyle="loose"
+        android:text="0"
+        android:textAlignment="center"
+        android:textSize="60sp"
+        app:circularflow_defaultRadius="20dp"
+        app:circularflow_radiusInDP="20dp"
+        app:layout_constraintCircleRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="409dp"
+        android:layout_height="367dp"
+        android:layout_marginTop="8dp"
+        android:background="#FEFEFE"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/resetButton">
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_margin="5sp"
-            android:background="#2196F3"
-            android:gravity="center"
-            android:text="TextView"
-            android:textColor="#F6F2F2"
-            app:layout_columnWeight="1"
-            app:layout_gravity="fill"
-            app:layout_rowWeight="1" />
+        <ToggleButton
+            android:id="@+id/varA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:onClick="onToggleClick"
+            android:text="ToggleButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/gateImage" />
+
+        <ToggleButton
+            android:id="@+id/operationResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:enabled="false"
+            android:focusable="false"
+            android:text="ToggleButton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ToggleButton
+            android:id="@+id/varB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="-8dp"
+            android:onClick="onToggleClick"
+            android:text="ToggleButton"
+            app:layout_constraintBottom_toBottomOf="@+id/gateImage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/varA" />
+
+        <ImageView
+            android:id="@+id/gateImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/and"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/operationResult"
+            app:layout_constraintHorizontal_bias="0.49"
+            app:layout_constraintStart_toEndOf="@+id/varA"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:dropDownWidth="200dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView2"
-            android:layout_margin="5sp"
-            android:background="#2196F3"
-            android:gravity="center"
-            android:text="TextView"
-            android:textColor="#F6F2F2"
-            app:layout_columnWeight="1"
-            app:layout_gravity="fill"
-            app:layout_rowWeight="1" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="Gate type:"
+            app:layout_constraintBottom_toBottomOf="@+id/spinner2"
+            app:layout_constraintEnd_toStartOf="@+id/spinner2"
+            app:layout_constraintTop_toTopOf="@+id/spinner2" />
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_margin="5sp"
-            android:background="#2196F3"
-            android:gravity="center"
-            android:text="TextView"
-            android:textColor="#F6F2F2"
-            app:layout_columnWeight="1"
-            app:layout_gravity="fill"
-            app:layout_rowWeight="1" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_margin="5sp"
-            android:background="#2196F3"
-            android:gravity="center"
-            android:text="TextView"
-            android:textColor="#F6F2F2"
-            app:layout_columnWeight="1"
-            app:layout_gravity="fill"
-            app:layout_rowWeight="1" />
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_margin="5sp"
-            android:background="#2196F3"
-            android:gravity="center"
-            android:text="TextView"
-            android:textColor="#F6F2F2"
-            app:layout_columnWeight="1"
-            app:layout_gravity="fill"
-            app:layout_rowWeight="1" />
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_margin="5sp"
-            android:background="#2196F3"
-            android:gravity="center"
-            android:text="TextView"
-            android:textColor="#F6F2F2"
-            app:layout_columnWeight="1"
-            app:layout_gravity="fill"
-            app:layout_rowWeight="1" />
-
-        <TextView
-            android:layout_margin="5sp"
-            android:background="#2196F3"
-            android:gravity="center"
-            android:text="TextView"
-            android:textColor="#F6F2F2"
-            app:layout_columnWeight="1"
-            app:layout_gravity="fill"
-            app:layout_rowWeight="1" />
-        <TextView
-            android:layout_margin="5sp"
-            android:background="#2196F3"
-            android:gravity="center"
-            android:text="TextView"
-            android:textColor="#F6F2F2"
-            app:layout_columnWeight="1"
-            app:layout_gravity="fill"
-            app:layout_rowWeight="1" />
-        <TextView
-            android:layout_margin="5sp"
-            android:background="#2196F3"
-            android:gravity="center"
-            android:text="TextView"
-            android:textColor="#F6F2F2"
-            app:layout_columnWeight="1"
-            app:layout_gravity="fill"
-            app:layout_rowWeight="1" />
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_height="5dp"
-            android:layout_margin="5sp"
-            android:layout_marginTop="50dp"
-            android:background="#E91E63"
-            android:gravity="center"
-            android:textColor="#F6F2F2"
-            app:layout_column="2"
-            app:layout_columnWeight="1"
-            app:layout_gravity="fill"
-            app:layout_row="1"
-            app:layout_rowWeight="1">
-
-            <TextView
-                android:layout_width="200dp"
-                android:layout_height="100dp"
-                android:layout_marginTop="150dp"
-                android:text="Jakiś bober tekst"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="MissingConstraints" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-    </androidx.gridlayout.widget.GridLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
