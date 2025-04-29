@@ -7,62 +7,71 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/counterText"
+
+        <ToggleButton
+            android:id="@+id/varA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:onClick="onToggleClick"
+            android:text="ToggleButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/gateImage" />
+
+        <ToggleButton
+            android:id="@+id/operationResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:enabled="false"
+            android:focusable="false"
+            android:text="ToggleButton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ToggleButton
+            android:id="@+id/varB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="-8dp"
+            android:onClick="onToggleClick"
+            android:text="ToggleButton"
+            app:layout_constraintBottom_toBottomOf="@+id/gateImage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/varA" />
+
+    <ImageView
+        android:id="@+id/gateImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:width="300dp"
-        android:height="100dp"
-        android:fontFamily="monospace"
-        android:gravity="center"
-        android:text=""
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/and"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/operationResult"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toEndOf="@+id/varA"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/resetButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="82dp"
-        android:width="200dp"
-        android:height="60dp"
-        android:fontFamily="monospace"
-        android:onClick="reset"
-        android:text="Zresetuj"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/counterText" />
+        <Spinner
+            android:id="@+id/spinner2"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:dropDownWidth="200dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/addOneButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="addOne"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
-        android:fontFamily="monospace"
-        android:textSize="18sp"
-        android:text="Dodaj 1"
-        android:width="160dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/counterText" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="Gate type:"
+            app:layout_constraintBottom_toBottomOf="@+id/spinner2"
+            app:layout_constraintEnd_toStartOf="@+id/spinner2"
+            app:layout_constraintTop_toTopOf="@+id/spinner2" />
 
-    <Button
-        android:id="@+id/subOneButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:width="160dp"
-        android:layout_marginTop="24dp"
-        android:textSize="18sp"
-        android:layout_marginEnd="32dp"
-        android:fontFamily="monospace"
-        android:onClick="subOne"
-        android:text="Odejmij 1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/counterText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
