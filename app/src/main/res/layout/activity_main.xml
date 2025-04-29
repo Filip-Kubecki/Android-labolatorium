@@ -8,46 +8,61 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/counterText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="TextView"
-        android:width="200dp"
-        android:height="60dp"
-        android:textSize="20sp"
+        android:layout_marginTop="100dp"
+        android:width="300dp"
+        android:height="100dp"
         android:fontFamily="monospace"
         android:gravity="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Button"
-        android:fontFamily="monospace"
-        android:onClick="onClick"
+        android:text=""
         android:textSize="20sp"
-        android:width="200dp"
-        android:height="60dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText" />
-
-    <EditText
-        android:id="@+id/editTextText"
-        android:layout_width="wrap_content"
-        android:fontFamily="monospace"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Name"
-        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/resetButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="82dp"
+        android:width="200dp"
+        android:height="60dp"
+        android:fontFamily="monospace"
+        android:onClick="reset"
+        android:text="Zresetuj"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/counterText" />
+
+    <Button
+        android:id="@+id/addOneButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="addOne"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="monospace"
+        android:textSize="18sp"
+        android:text="Dodaj 1"
+        android:width="160dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/counterText" />
+
+    <Button
+        android:id="@+id/subOneButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="160dp"
+        android:layout_marginTop="24dp"
+        android:textSize="18sp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="monospace"
+        android:onClick="subOne"
+        android:text="Odejmij 1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/counterText" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
