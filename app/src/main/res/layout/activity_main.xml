@@ -9,6 +9,16 @@
     tools:context=".MainActivity">
 
 
+    <ImageView
+        android:id="@+id/coinImageView"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/pln_awers"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
@@ -33,7 +43,7 @@
         android:background="#7E57C2"
         android:fontFamily="sans-serif-smallcaps"
         android:gravity="center_vertical"
-        android:text="Workout"
+        android:text="Coin toss"
         android:textColor="#F9F9F9"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -43,249 +53,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.gridlayout.widget.GridLayout
-        android:id="@+id/gridLayout"
-        android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_marginTop="60dp"
-        android:foregroundGravity="center"
-        app:columnCount="3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_weight="1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_weight="1"
-        app:rowCount="3">
-
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_columnWeight="1"
-            app:layout_rowWeight="1">
-
-            <ImageView
-                android:id="@+id/imageView25"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:layout_columnWeight="1"
-                app:layout_rowWeight="1"
-                app:srcCompat="@drawable/abdominal_bench"
-                tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Abdominal bench" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_columnWeight="1"
-            app:layout_rowWeight="1">
-
-            <ImageView
-                android:id="@+id/imageView25"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:layout_columnWeight="1"
-                app:layout_rowWeight="1"
-                app:srcCompat="@drawable/elliptical"
-                tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Eliptical" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_columnWeight="1"
-            app:layout_rowWeight="1">
-
-            <ImageView
-                android:id="@+id/imageView25"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:layout_columnWeight="1"
-                app:layout_rowWeight="1"
-                app:srcCompat="@drawable/monkey_bars"
-                tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Monkey bars" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_columnWeight="1"
-            app:layout_rowWeight="1">
-
-            <ImageView
-                android:id="@+id/imageView25"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:layout_columnWeight="1"
-                app:layout_rowWeight="1"
-                app:srcCompat="@drawable/stationary_bike"
-                tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Stationary bike" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_columnWeight="1"
-            app:layout_rowWeight="1">
-
-            <ImageView
-                android:id="@+id/imageView25"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:layout_columnWeight="1"
-                app:layout_rowWeight="1"
-                app:srcCompat="@drawable/treadmill_machine"
-                tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tradmill" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_columnWeight="1"
-            app:layout_rowWeight="1">
-
-            <ImageView
-                android:id="@+id/imageView25"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:layout_columnWeight="1"
-                app:layout_rowWeight="1"
-                app:srcCompat="@drawable/yoga"
-                tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Yoga" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_columnWeight="1"
-            app:layout_rowWeight="1">
-
-            <ImageView
-                android:id="@+id/imageView25"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:layout_columnWeight="1"
-                app:layout_rowWeight="1"
-                app:srcCompat="@drawable/abdominal_bench"
-                tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Some other" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_columnWeight="1"
-            app:layout_rowWeight="1">
-
-            <ImageView
-                android:id="@+id/imageView25"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:layout_columnWeight="1"
-                app:layout_rowWeight="1"
-                app:srcCompat="@drawable/abdominal_bench"
-                tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sleeping" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_columnWeight="1"
-            app:layout_rowWeight="1">
-
-            <ImageView
-                android:id="@+id/imageView25"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                app:layout_columnWeight="1"
-                app:layout_rowWeight="1"
-                app:srcCompat="@drawable/abdominal_bench"
-                tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="I don't really know" />
-        </LinearLayout>
-
-    </androidx.gridlayout.widget.GridLayout>
-
     <Button
         android:id="@+id/activityButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="100dp"
         android:width="260dp"
         android:onClick="randomActivity"
-        android:text="Choose activity"
+        android:text="Toss"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/coinImageView" />
 
     <TextView
         android:id="@+id/activityTextView"

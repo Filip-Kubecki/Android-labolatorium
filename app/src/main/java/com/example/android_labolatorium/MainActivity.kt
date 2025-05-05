@@ -2,6 +2,7 @@ package com.example.android_labolatorium
 
 import android.annotation.SuppressLint
 import android.graphics.Color
+import android.media.Image
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -31,21 +32,11 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var activityButton: Button
     private lateinit var activityTextView: TextView
+    private lateinit var coinImageView: ImageView
 
-    private val baseString = "The selected activity is:"
 
-
-    private var list = listOf(
-        "Abdominal bench",
-        "Eliptical",
-        "Monkey bars",
-        "Stationary bike",
-        "Treadmill",
-        "Yoga",
-        "Bober1",
-        "Bober2",
-        "Bober3"
-    )
+    private val baseString = "You got: "
+    private var currentSide = true // true - orzeł, false - reszka
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,6 +54,9 @@ class MainActivity : AppCompatActivity() {
         activityTextView = findViewById(R.id.activityTextView)
 
         activityTextView.text = baseString
+
+        coinImageView = findViewById(R.id.coinImageView)
+        coinImageView.setImageResource(R.drawable.pln_awers)
     }
 
 
@@ -80,17 +74,40 @@ class MainActivity : AppCompatActivity() {
         return if(value) "ON" else "OFF"
     }
 
-    @SuppressLint("SetTextI18n")
     fun randomActivity(view: View) {
-        val tmp = Toast.makeText(this, "Losu losu losu...", Toast.LENGTH_LONG)
+
+        val tmp = Toast.makeText(this, "Leć malysz leć!", Toast.LENGTH_LONG)
         tmp.show()
 
-        val hand: Handler = Handler()
-        hand.run {
-            postDelayed(Runnable() {
-                activityTextView.text = baseString+"\n"+list.random()
-            }, 3000)
-        }
+        val randomNumber = (1..6).random()
+        rotateCoin(randomNumber)
+    }
+
+    private fun rotateCoin(n: Int){
+        coinImageView.animate().apply {
+            duration = 200
+            rotationXBy(90f)
+        }.withEndAction(){
+            if (currentSide){
+                coinImageView.setImageResource(R.drawable.pln_rewers)
+            }else{
+                coinImageView.setImageResource(R.drawable.pln_awers)
+            }
+            currentSide = !currentSide
+            coinImageView.animate().apply {
+                duration = 200
+                rotationXBy(90f)
+            }.withEndAction(){
+                if(n-1 > 0){
+                    rotateCoin(n-1)
+                }else{
+                    if (currentSide)
+                        activityTextView.text = baseString+"head"
+                    else
+                        activityTextView.text = baseString+"tails"
+                }
+            }.start()
+        }.start()
     }
 }
 
