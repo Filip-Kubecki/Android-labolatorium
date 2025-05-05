@@ -1,44 +1,31 @@
 package com.example.android_labolatorium
 
 import android.annotation.SuppressLint
-import android.graphics.Color
-import android.media.Image
+import android.graphics.ImageDecoder
+import android.graphics.drawable.AnimatedImageDrawable
 import android.os.Bundle
-import android.os.Handler
-import android.util.Log
 import android.view.View
-import android.view.View.INVISIBLE
-import android.view.View.VISIBLE
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageView
-import android.widget.ListAdapter
-import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
-import android.widget.ToggleButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.get
-import androidx.core.view.marginBottom
-import androidx.transition.Visibility
-import kotlinx.coroutines.delay
+import pl.droidsonroids.gif.GifImageView
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var activityButton: Button
     private lateinit var activityTextView: TextView
-    private lateinit var coinImageView: ImageView
+    private lateinit var diceImageView: GifImageView
+
 
 
     private val baseString = "You got: "
-    private var currentSide = true // true - orzeł, false - reszka
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint("MissingInflatedId", "NewApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -55,8 +42,7 @@ class MainActivity : AppCompatActivity() {
 
         activityTextView.text = baseString
 
-        coinImageView = findViewById(R.id.coinImageView)
-        coinImageView.setImageResource(R.drawable.pln_awers)
+        diceImageView = findViewById(R.id.diceGifImageView)
     }
 
 
@@ -84,30 +70,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun rotateCoin(n: Int){
-        coinImageView.animate().apply {
-            duration = 200
-            rotationXBy(90f)
-        }.withEndAction(){
-            if (currentSide){
-                coinImageView.setImageResource(R.drawable.pln_rewers)
-            }else{
-                coinImageView.setImageResource(R.drawable.pln_awers)
-            }
-            currentSide = !currentSide
-            coinImageView.animate().apply {
-                duration = 200
-                rotationXBy(90f)
-            }.withEndAction(){
-                if(n-1 > 0){
-                    rotateCoin(n-1)
-                }else{
-                    if (currentSide)
-                        activityTextView.text = baseString+"head"
-                    else
-                        activityTextView.text = baseString+"tails"
-                }
-            }.start()
-        }.start()
     }
 }
 
