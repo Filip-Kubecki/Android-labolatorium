@@ -42,9 +42,9 @@ class MainActivity : AppCompatActivity() {
         "Stationary bike",
         "Treadmill",
         "Yoga",
-        "Bober1",
-        "Bober2",
-        "Bober3"
+        "Some other",
+        "Sleeping",
+        "I don't really know"
     )
 
     @SuppressLint("MissingInflatedId")
@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity() {
         hand.run {
             postDelayed(Runnable() {
                 activityTextView.text = baseString+"\n"+list.random()
-            }, 3000)
+            }, 2000)
         }
     }
 }
