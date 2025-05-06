@@ -9,45 +9,16 @@
     tools:context=".MainActivity">
 
 
-    <ImageView
-        android:id="@+id/coinImageView"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/pln_awers"
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/diceGifImageView"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="96dp"
+        android:src="@drawable/dice_game"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <ImageView
-        android:id="@+id/coinImageView2"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:src="@drawable/pln_awers"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <ImageView
-        android:id="@+id/coinImageView3"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/pln_awers"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/coinImageView" />
-
-    <ImageView
-        android:id="@+id/coinImageView4"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:src="@drawable/pln_awers"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/coinImageView" />
 
     <TextView
         android:id="@+id/textView"
@@ -73,7 +44,7 @@
         android:background="#7E57C2"
         android:fontFamily="sans-serif-smallcaps"
         android:gravity="center_vertical"
-        android:text="Coin toss"
+        android:text="Dice roll"
         android:textColor="#F9F9F9"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -87,13 +58,13 @@
         android:id="@+id/activityButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:width="260dp"
         android:onClick="randomActivity"
-        android:text="Toss"
+        android:text="Roll the dice"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/coinImageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/diceGifImageView" />
 
     <TextView
         android:id="@+id/activityTextView"

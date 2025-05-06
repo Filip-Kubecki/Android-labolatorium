@@ -2,31 +2,31 @@ package com.example.android_labolatorium
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import pl.droidsonroids.gif.GifDrawable
+import pl.droidsonroids.gif.GifImageView
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var activityButton: Button
-    private lateinit var activityTextView: TextView
+    //    private lateinit var activityTextView: TextView
+    private lateinit var diceImageView: GifImageView
+    private lateinit var gifDrawable: GifDrawable
 
-    private lateinit var coinImageView: ImageView
-    private lateinit var coinImageView2: ImageView
-    private lateinit var coinImageView3: ImageView
-    private lateinit var coinImageView4: ImageView
+
 
 
     private val baseString = "You got: "
-    private var currentSide = mutableListOf(true, true, true, true) // true - orzeł, false - reszka
+    private val baseToastString = "You rolled"
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint("MissingInflatedId", "NewApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -37,74 +37,68 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+
         activityButton = findViewById(R.id.activityButton)
-        activityTextView = findViewById(R.id.activityTextView)
 
-        activityTextView.text = baseString
+//        activityTextView = findViewById(R.id.activityTextView)
+//        activityTextView.text = baseString
 
-        coinImageView = findViewById(R.id.coinImageView)
-        coinImageView.setImageResource(R.drawable.pln_awers)
+        diceImageView = findViewById(R.id.diceGifImageView)
 
-        coinImageView2 = findViewById(R.id.coinImageView2)
-        coinImageView2.setImageResource(R.drawable.pln_awers)
+        gifDrawable = diceImageView.drawable as GifDrawable
 
-        coinImageView3 = findViewById(R.id.coinImageView3)
-        coinImageView3.setImageResource(R.drawable.pln_awers)
-
-        coinImageView4 = findViewById(R.id.coinImageView4)
-        coinImageView4.setImageResource(R.drawable.pln_awers)
+        gifDrawable.stop()
     }
 
+
+    private fun varToBool(value: String): Boolean{
+        return if (value == "ON") true else {
+            if(value == "OFF"){
+                false
+            }else{
+                throw IllegalArgumentException("Wrong value")
+            }
+        }
+    }
+
+    private fun boolToToggleString(value: Boolean): String{
+        return if(value) "ON" else "OFF"
+    }
 
     fun randomActivity(view: View) {
-        activityTextView.text = baseString
-        val tmp = Toast.makeText(this, "Losowanie", Toast.LENGTH_LONG)
-        tmp.show()
+        var resultToast = Toast.makeText(this, "3", Toast.LENGTH_LONG)
+        var infoToast = Toast.makeText(this, "3", Toast.LENGTH_SHORT)
+        infoToast.setText("Rolling rolling...")
+        infoToast.show()
+
+        val randomDelay:Long = ((1..5).random() * 500).toLong()
+
+        gifDrawable.setSpeed(0.8f)
+        gifDrawable.start()
 
 
-        var randomNumber = (3..8).random()
-        rotateCoin(randomNumber, coinImageView, 0)
-
-        randomNumber = (3..8).random()
-        rotateCoin(randomNumber, coinImageView2, 1)
-
-        randomNumber = (3..8).random()
-        rotateCoin(randomNumber, coinImageView3, 2)
-
-        randomNumber = (3..8).random()
-        rotateCoin(randomNumber, coinImageView4, 3)
-    }
-
-    @SuppressLint("SetTextI18n")
-    private fun rotateCoin(n: Int, coinImageView: ImageView, side: Int){
-        val time = (150..210).random().toLong()
-        coinImageView.animate().apply {
-            duration = time
-            rotationXBy(90f)
-        }.withEndAction(){
-            if (currentSide[side]){
-                coinImageView.setImageResource(R.drawable.pln_rewers)
-            }else{
-                coinImageView.setImageResource(R.drawable.pln_awers)
-            }
-            currentSide[side] = !currentSide[side]
-
-            coinImageView.animate().apply {
-                duration = time
-                rotationXBy(90f)
-            }.withEndAction(){
-                if(n-1 > 0){
-                    rotateCoin(n-1, coinImageView, side)
-                }else{
-                    if (currentSide[side])
-                        activityTextView.text  = "${activityTextView.text}\n Coin ${side+1} head"
-                    else
-                        activityTextView.text  = "${activityTextView.text}\n Coin ${side+1} tail"
+        val tr = Handler()
+        tr.run {
+            postDelayed(
+                {
+                    infoToast.cancel()
+                    gifDrawable.stop()
+                    val index = gifDrawable.currentFrameIndex
+                    var toastString = ""
+                    if (index > 0){
+                        toastString = "$baseToastString $index points!"
+                    }else if(index == 0){
+                        toastString = "$baseToastString 6 points!"
+                    }else{
+                        toastString = "Critical error"
+                    }
+                    resultToast.setText(toastString)
+                    resultToast.show()
                 }
-            }.start()
-        }.start()
+                , randomDelay
+            )
+        }
+
     }
+
 }
-
-
-
