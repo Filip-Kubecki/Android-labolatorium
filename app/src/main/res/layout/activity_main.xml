@@ -9,14 +9,13 @@
     tools:context=".MainActivity">
 
 
-    <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/diceGifImageView"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="96dp"
-        android:src="@drawable/dice_game"
+    <ImageView
+        android:id="@+id/coinImageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/pln_awers"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -44,7 +43,7 @@
         android:background="#7E57C2"
         android:fontFamily="sans-serif-smallcaps"
         android:gravity="center_vertical"
-        android:text="Dice roll"
+        android:text="Coin toss"
         android:textColor="#F9F9F9"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -58,13 +57,13 @@
         android:id="@+id/activityButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="100dp"
         android:width="260dp"
         android:onClick="randomActivity"
-        android:text="Roll the dice"
+        android:text="Toss"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/diceGifImageView" />
+        app:layout_constraintTop_toBottomOf="@+id/coinImageView" />
 
     <TextView
         android:id="@+id/activityTextView"
