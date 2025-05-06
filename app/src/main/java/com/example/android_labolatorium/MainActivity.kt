@@ -16,11 +16,15 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var activityButton: Button
     private lateinit var activityTextView: TextView
+
     private lateinit var coinImageView: ImageView
+    private lateinit var coinImageView2: ImageView
+    private lateinit var coinImageView3: ImageView
+    private lateinit var coinImageView4: ImageView
 
 
     private val baseString = "You got: "
-    private var currentSide = true // true - orzeł, false - reszka
+    private var currentSide = mutableListOf(true, true, true, true) // true - orzeł, false - reszka
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +37,6 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-
         activityButton = findViewById(R.id.activityButton)
         activityTextView = findViewById(R.id.activityTextView)
 
@@ -41,54 +44,62 @@ class MainActivity : AppCompatActivity() {
 
         coinImageView = findViewById(R.id.coinImageView)
         coinImageView.setImageResource(R.drawable.pln_awers)
+
+        coinImageView2 = findViewById(R.id.coinImageView2)
+        coinImageView2.setImageResource(R.drawable.pln_awers)
+
+        coinImageView3 = findViewById(R.id.coinImageView3)
+        coinImageView3.setImageResource(R.drawable.pln_awers)
+
+        coinImageView4 = findViewById(R.id.coinImageView4)
+        coinImageView4.setImageResource(R.drawable.pln_awers)
     }
 
-
-    private fun varToBool(value: String): Boolean{
-        return if (value == "ON") true else {
-            if(value == "OFF"){
-                false
-            }else{
-                throw IllegalArgumentException("Wrong value")
-            }
-        }
-    }
-
-    private fun boolToToggleString(value: Boolean): String{
-        return if(value) "ON" else "OFF"
-    }
 
     fun randomActivity(view: View) {
-
-        val tmp = Toast.makeText(this, "Leć malysz leć!", Toast.LENGTH_LONG)
+        activityTextView.text = baseString
+        val tmp = Toast.makeText(this, "Losowanie", Toast.LENGTH_LONG)
         tmp.show()
 
-        val randomNumber = (3..8).random()
-        rotateCoin(randomNumber)
+
+        var randomNumber = (3..8).random()
+        rotateCoin(randomNumber, coinImageView, 0)
+
+        randomNumber = (3..8).random()
+        rotateCoin(randomNumber, coinImageView2, 1)
+
+        randomNumber = (3..8).random()
+        rotateCoin(randomNumber, coinImageView3, 2)
+
+        randomNumber = (3..8).random()
+        rotateCoin(randomNumber, coinImageView4, 3)
     }
 
-    private fun rotateCoin(n: Int){
+    @SuppressLint("SetTextI18n")
+    private fun rotateCoin(n: Int, coinImageView: ImageView, side: Int){
+        val time = (150..210).random().toLong()
         coinImageView.animate().apply {
-            duration = 200
+            duration = time
             rotationXBy(90f)
         }.withEndAction(){
-            if (currentSide){
+            if (currentSide[side]){
                 coinImageView.setImageResource(R.drawable.pln_rewers)
             }else{
                 coinImageView.setImageResource(R.drawable.pln_awers)
             }
-            currentSide = !currentSide
+            currentSide[side] = !currentSide[side]
+
             coinImageView.animate().apply {
-                duration = 200
+                duration = time
                 rotationXBy(90f)
             }.withEndAction(){
                 if(n-1 > 0){
-                    rotateCoin(n-1)
+                    rotateCoin(n-1, coinImageView, side)
                 }else{
-                    if (currentSide)
-                        activityTextView.text = baseString+"head"
+                    if (currentSide[side])
+                        activityTextView.text  = "${activityTextView.text}\n Coin ${side+1} head"
                     else
-                        activityTextView.text = baseString+"tails"
+                        activityTextView.text  = "${activityTextView.text}\n Coin ${side+1} tail"
                 }
             }.start()
         }.start()
