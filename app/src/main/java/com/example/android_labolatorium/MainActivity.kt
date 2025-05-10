@@ -1,30 +1,42 @@
 package com.example.android_labolatorium
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
-import android.os.Handler
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.EditText
+import android.widget.ProgressBar
+import android.widget.Spinner
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import pl.droidsonroids.gif.GifDrawable
-import pl.droidsonroids.gif.GifImageView
+import com.google.android.material.snackbar.Snackbar
+import kotlin.math.round
+import androidx.core.graphics.toColorInt
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var activityButton: Button
-    //    private lateinit var activityTextView: TextView
-    private lateinit var diceImageView: GifImageView
-    private lateinit var gifDrawable: GifDrawable
+//    Unit setting
+    private lateinit var weightUnit: Spinner
+    private lateinit var heightUnit: Spinner
 
+//    Number inputs
+    private lateinit var weightTextEdit: EditText
+    private val weightUnits = listOf("kg", "lb")
+    private lateinit var heightTextEdit: EditText
+    private val heightUnits = listOf("cm", "inch", "m")
 
+//    Number output
+    private lateinit var bmiTextView: TextView
+//    private lateinit var bmiProgress: ProgressBar
 
-
-    private val baseString = "You got: "
-    private val baseToastString = "You rolled"
+    private lateinit var calcButton: Button
 
     @SuppressLint("MissingInflatedId", "NewApi")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,68 +49,66 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+//        Init Unit Spinners
+        weightUnit = findViewById(R.id.weightUnit)
+        val weightAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, weightUnits)
+        weightAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        weightUnit.adapter = weightAdapter
+//        weightUnit.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+//            override fun onNothingSelected(parent: AdapterView<*>?) {}
+//
+//            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {}
+//
+//        }
+        heightUnit = findViewById(R.id.heightUnit)
+        val heightAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, heightUnits)
+        heightAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        heightUnit.adapter = heightAdapter
 
-        activityButton = findViewById(R.id.activityButton)
+//        Init input EditTexts
+        weightTextEdit = findViewById(R.id.editTextWeight)
+        heightTextEdit = findViewById(R.id.editTextHeight)
 
-//        activityTextView = findViewById(R.id.activityTextView)
-//        activityTextView.text = baseString
+//        Init output TextView
+        bmiTextView = findViewById(R.id.textViewBMI)
+//        bmiProgress = findViewById(R.id.progressBarBmi)
 
-        diceImageView = findViewById(R.id.diceGifImageView)
-
-        gifDrawable = diceImageView.drawable as GifDrawable
-
-        gifDrawable.stop()
+        calcButton = findViewById(R.id.calculateButton)
     }
 
+    fun calculateBMI(view: View) {
+        if((weightTextEdit.text.toString() == "") || (heightTextEdit.text.toString() == "")){
+            val errorPopup = Snackbar.make(view, R.string.errorNoInput, Snackbar.LENGTH_SHORT)
+            errorPopup.show()
 
-    private fun varToBool(value: String): Boolean{
-        return if (value == "ON") true else {
-            if(value == "OFF"){
-                false
+            bmiTextView.text = "error"
+        }else{
+            val weight = weightTextEdit.text.toString().toDouble()
+            val height = heightTextEdit.text.toString().toDouble()/100
+            val bmi =  weight/(height*height)
+
+            bmiTextView.text = bmi.round(2).toString()
+//            bmiProgress.progress = bmi.toInt()
+
+            if(bmi < 18){
+                bmiTextView.setBackgroundColor("#5ac1e9".toColorInt())
+            }else if(bmi < 25){
+                bmiTextView.setBackgroundColor("#5ec982".toColorInt())
+            }else if(bmi < 30){
+                bmiTextView.setBackgroundColor("#ffd701".toColorInt())
+            }else if(bmi < 40){
+                bmiTextView.setBackgroundColor("#fe8d00".toColorInt())
             }else{
-                throw IllegalArgumentException("Wrong value")
+                bmiTextView.setBackgroundColor("#ff0100".toColorInt())
             }
+
         }
     }
 
-    private fun boolToToggleString(value: Boolean): String{
-        return if(value) "ON" else "OFF"
-    }
+}
 
-    fun randomActivity(view: View) {
-        var resultToast = Toast.makeText(this, "3", Toast.LENGTH_LONG)
-        var infoToast = Toast.makeText(this, "3", Toast.LENGTH_SHORT)
-        infoToast.setText("Rolling rolling...")
-        infoToast.show()
-
-        val randomDelay:Long = ((1..5).random() * 500).toLong()
-
-        gifDrawable.setSpeed(0.8f)
-        gifDrawable.start()
-
-
-        val tr = Handler()
-        tr.run {
-            postDelayed(
-                {
-                    infoToast.cancel()
-                    gifDrawable.stop()
-                    val index = gifDrawable.currentFrameIndex
-                    var toastString = ""
-                    if (index > 0){
-                        toastString = "$baseToastString $index points!"
-                    }else if(index == 0){
-                        toastString = "$baseToastString 6 points!"
-                    }else{
-                        toastString = "Critical error"
-                    }
-                    resultToast.setText(toastString)
-                    resultToast.show()
-                }
-                , randomDelay
-            )
-        }
-
-    }
-
+private fun Double.round(decimals: Int): Double {
+    var multiplier = 1.0
+    repeat(decimals) { multiplier *= 10 }
+    return round(this * multiplier) / multiplier
 }

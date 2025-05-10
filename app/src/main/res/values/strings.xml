@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Android-labolatorium</string>
+    <string name="errorNoInput">Error. Wrong input value or values</string>
 </resources>
