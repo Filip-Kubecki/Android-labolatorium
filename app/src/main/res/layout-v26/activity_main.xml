@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
+    android:background="#1c1c1e"
     tools:context=".MainActivity">
 
     <EditText
@@ -15,7 +16,8 @@
         android:ems="10"
         android:gravity="center"
         android:inputType="numberSigned"
-        android:text="175"
+        android:text="180.0"
+        android:textColor="#c8c8ca"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView2" />
@@ -38,9 +40,32 @@
         android:height="50dp"
         android:gravity="center"
         android:text="Wzrost"
+        android:textColor="#c8c8ca"
         android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/editTextHeight"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Wzrost"
+        android:textColor="#c8c8ca"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextHeight"
+        app:layout_constraintStart_toStartOf="@+id/editTextHeight" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Waga"
+        android:textColor="#c8c8ca"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextWeight"
+        app:layout_constraintStart_toStartOf="@+id/editTextWeight" />
 
     <EditText
         android:id="@+id/editTextWeight"
@@ -49,7 +74,8 @@
         android:ems="10"
         android:gravity="center"
         android:inputType="numberSigned"
-        android:text="90"
+        android:text="176.36981"
+        android:textColor="#c8c8ca"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView" />
@@ -58,15 +84,16 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="32dp"
         android:width="65dp"
         android:height="50dp"
         android:gravity="center"
         android:text="Waga"
+        android:textColor="#c8c8ca"
         android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/editTextWeight"
-        app:layout_constraintTop_toBottomOf="@+id/textViewBMI" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Spinner
         android:id="@+id/weightUnit"
@@ -80,17 +107,23 @@
         android:id="@+id/textViewBMI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:width="200dp"
-        android:height="50dp"
+        android:fontFamily="monospace"
+        android:layout_marginTop="-34dp"
+        android:width="100dp"
+        android:minWidth="100dp"
+        android:height="100dp"
+        android:minHeight="100dp"
         android:ems="10"
         android:gravity="center"
         android:inputType="number"
-        android:text="none"
+        android:text="0"
+        android:textColor="#fff"
         android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        tools:ignore="TextViewEdits" />
 
     <Button
         android:id="@+id/calculateButton"
@@ -99,9 +132,9 @@
         android:layout_marginTop="32dp"
         android:width="300dp"
         android:height="100dp"
+        android:onClick="calculateBMI"
         android:text="Calculate"
         android:textSize="30dp"
-        android:onClick="calculateBMI"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -110,25 +143,22 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
         android:text="BMI"
-        android:textSize="34sp"
+        android:textColor="#c8c8ca"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ProgressBar
-        android:id="@+id/progressBarBmi"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="90dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:max="40"
-        android:min="18"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewBMI" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewBMI"
+        app:srcCompat="@drawable/bmi" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
