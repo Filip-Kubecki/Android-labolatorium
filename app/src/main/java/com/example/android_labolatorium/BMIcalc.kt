@@ -128,6 +128,17 @@ class BMIcalc : AppCompatActivity() {
         calcButton = findViewById(R.id.calculateButton)
     }
 
+
+    override fun onPause() {
+        super.onPause()
+        Log.d("SELF LOG", "PAUSED BMI CALC")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("SELF LOG", "RESUMED BMI CALC")
+    }
+
     override fun onStop() {
         super.onStop()
         Log.d("SELF LOG", "STOPPED BMI CALC")
