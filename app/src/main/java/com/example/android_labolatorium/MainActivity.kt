@@ -40,8 +40,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var employeePerSeekBar: SeekBar
 
 
-
-
     @SuppressLint("MissingInflatedId", "NewApi", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -130,17 +128,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun numberFormater(value: Double):String{
-//        var tmp = ""
-//        var i = 0
-//        value.roundToInt().toString().forEach { it ->
-//            tmp = tmp+it
-//            if (i % 3 == 0){
-//                tmp = "$tmp "
-//            }
-//            i++
-//        }
-//
-//        return tmp
         return value.toString()
     }
 }
