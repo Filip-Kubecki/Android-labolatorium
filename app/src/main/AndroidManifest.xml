@@ -6,15 +6,12 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/obese_weight_circle"
+        android:icon="@drawable/ic_launcher_foreground"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/obese_weight_circle"
+        android:roundIcon="@drawable/ic_launcher_foreground"
         android:supportsRtl="true"
         android:theme="@style/Theme.Androidlabolatorium"
         tools:targetApi="31">
-        <activity
-            android:name=".BMIcalc"
-            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
