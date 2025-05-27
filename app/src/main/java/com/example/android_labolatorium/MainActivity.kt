@@ -5,8 +5,6 @@ import android.annotation.SuppressLint
 import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.databinding.DataBindingUtil
 import com.example.android_labolatorium.databinding.ActivityMainBinding
 

@@ -18,6 +18,16 @@
             android:name="data"
             app:argType="string"
             android:defaultValue=" " />
+        <action
+            android:id="@+id/action_firstFragment_to_addFragment"
+            app:destination="@id/addFragment" />
+        <action
+            android:id="@+id/action_firstFragment_to_subFragment"
+            app:destination="@id/subFragment" />
+        <argument
+            android:name="number"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
     <fragment
         android:id="@+id/secondFragment"
@@ -46,5 +56,31 @@
             android:name="data"
             app:argType="string"
             android:defaultValue=" " />
+    </fragment>
+    <fragment
+        android:id="@+id/addFragment"
+        android:name="com.example.android_labolatorium.Fragments.AddFragment"
+        tools:layout="@layout/fragment_add"
+        android:label="AddFragment" >
+        <action
+            android:id="@+id/action_addFragment_to_firstFragment"
+            app:destination="@id/firstFragment" />
+        <argument
+            android:name="value"
+            app:argType="string"
+            android:defaultValue="0" />
+    </fragment>
+    <fragment
+        android:id="@+id/subFragment"
+        android:name="com.example.android_labolatorium.Fragments.SubFragment"
+        tools:layout="@layout/fragment_sub"
+        android:label="SubFragment" >
+        <action
+            android:id="@+id/action_subFragment_to_firstFragment"
+            app:destination="@id/firstFragment" />
+        <argument
+            android:name="value"
+            app:argType="string"
+            android:defaultValue="0" />
     </fragment>
 </navigation>

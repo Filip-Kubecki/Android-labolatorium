@@ -22,11 +22,12 @@
                 android:id="@+id/tv_fragm1"
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
-                android:text="Fragment 1"
-                android:textSize="32sp"
+                android:layout_marginTop="@dimen/topMargin"
                 android:background="#FF7043"
-                android:textColor="@color/white"
                 android:gravity="center"
+                android:text="Fragment 1"
+                android:textColor="@color/white"
+                android:textSize="32sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -38,7 +39,7 @@
                 android:ems="10"
                 android:gravity="center"
                 android:inputType="text"
-                android:text="Input text"
+                android:text="Input text or number"
                 android:textSize="24sp"
                 android:textColor="#0A0909"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -64,6 +65,26 @@
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_in_f1" />
+
+            <RadioButton
+                android:id="@+id/radioSubAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:text="Add or sub"
+                app:layout_constraintBottom_toTopOf="@+id/tv_wynik_f1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_in_f1" />
+
+            <RadioButton
+                android:id="@+id/radioMath"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:text="Math?"
+                app:layout_constraintBottom_toTopOf="@+id/tv_wynik_f1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btn_in_f1" />
 
